@@ -32,4 +32,15 @@ public class PosMachine {
         List<Item> purchasedItems = new ArrayList<>(new HashSet<>(allItems));;
         return purchasedItems;
     }
+
+    public List<Item> calculateSubtotal (List<Item> purchasedItems){
+        List<Item> itemsWithSubtotal = new ArrayList<>();
+        for(Item itemInfo: purchasedItems){
+            int subTotal = itemInfo.getUnitPrice()* itemInfo.getQuantity();
+            Item updatedItem = new Item(itemInfo.getName(), itemInfo.getQuantity(), itemInfo.getUnitPrice(),subTotal);
+            itemsWithSubtotal.add(updatedItem);
+
+        }
+        return itemsWithSubtotal;
+    }
 }
