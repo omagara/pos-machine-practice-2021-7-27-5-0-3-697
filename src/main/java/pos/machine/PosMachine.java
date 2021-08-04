@@ -43,4 +43,13 @@ public class PosMachine {
         }
         return itemsWithSubtotal;
     }
+
+    public Receipt calculateTotalCost (List<Item> itemsWithSubtotal){
+        int totalCost=0;
+        for (Item itemInfo: itemsWithSubtotal){
+            totalCost += itemInfo.getSubTotal();
+        }
+        Receipt receipt = new Receipt(totalCost,itemsWithSubtotal);
+        return receipt;
+    }
 }
