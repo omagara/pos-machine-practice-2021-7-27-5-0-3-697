@@ -52,4 +52,12 @@ public class PosMachine {
         Receipt receipt = new Receipt(totalCost,itemsWithSubtotal);
         return receipt;
     }
+
+    public Receipt calculateReceipt (List<Item> purchasedItems){
+        List<Item> itemsWithSubtotal = calculateSubtotal(purchasedItems);
+        Receipt itemsWithTotalCost = calculateTotalCost(itemsWithSubtotal);
+        Receipt receipt = itemsWithTotalCost;
+
+        return receipt;
+    }
 }

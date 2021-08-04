@@ -44,3 +44,13 @@ C: I used a simple approach to get the total cost of the items
 
 A: I should keep the good behavior on implementing the function
 
+
+Function name:calculateReceipt
+
+P: 2 mins.
+
+D: 1 mins. 8s
+
+C: I spimply invoked on the calculateSubtotal and calculateTotalCost
+
+A: I should keep the good behavior on implementing the function
