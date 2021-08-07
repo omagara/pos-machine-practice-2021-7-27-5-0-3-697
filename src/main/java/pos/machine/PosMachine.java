@@ -46,4 +46,14 @@ public class PosMachine {
         return calculateTotalCost(itemsWithSubtotal);
     }
 
+    public String addItemsDetail(Receipt receipt) {
+        String itemsDetail="";
+        for (Item itemDetail: receipt.getItemsWithSubtotal()) {
+            itemsDetail = itemsDetail + "Name: " + itemDetail.getName() + ", Quantity: " + itemDetail.getQuantity() +
+                    ", Unit price: " + itemDetail.getUnitPrice() +
+                    " (yuan), Subtotal: " + itemDetail.getSubTotal() + " (yuan)\n";
+        }
+        return itemsDetail;
+    }
+
 }
