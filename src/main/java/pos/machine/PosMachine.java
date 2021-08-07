@@ -56,4 +56,12 @@ public class PosMachine {
         return itemsDetail;
     }
 
+    public String addTotalCost(String itemsDetail, Double totalCost) {
+        return "***<store earning no money>Receipt***\n" + itemsDetail +
+                "----------------------\n" +
+                "Total: " + totalCost.intValue() + " (yuan)\n" +
+                "**********************";
+    }
+
+
 }

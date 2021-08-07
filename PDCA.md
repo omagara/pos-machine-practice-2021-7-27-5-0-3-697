@@ -33,10 +33,17 @@ C: I simply invoked on the calculateSubtotal and calculateTotalCost
 A: I should keep the good behavior on implementing the function  
   
   
-Function name:addItemsDetail 
+Function name:addItemsDetail  
 P: 5 mins.  
 D: 6 mins. 22s  
 C: I focused too much on implementing codes that would reduce the number of lines  
 A: I should separate the time for creating functions and refactoring  
+  
+  
+Function name:addTotalCost 
+P: 3 mins.  
+D: 2 mins. 53s  
+C: I directly conactenate the items detail, total cost, and the required string  
+A: I should keep the good behavior on implementing the function  
 
 
