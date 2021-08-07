@@ -4,7 +4,12 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class PosMachine {
-    public String printReceipt(List<String> barcodes) { return null; }
+    public String printReceipt(List<String> barcodes) {
+        List<Item> itemsList = convertToItems(barcodes);
+        Receipt receipt = calculateReceipt(itemsList);
+
+        return generateReceipt(receipt);
+    }
 
     public List<ItemInfo> getItemsInfo() {
         return ItemDataLoader.loadAllItemInfos();
