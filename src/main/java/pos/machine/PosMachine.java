@@ -4,41 +4,33 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class PosMachine {
-    public String printReceipt(List<String> barcodes) {
-        return null;
-    }
+    public String printReceipt(List<String> barcodes) { return null; }
 
     public List<ItemInfo> getItemsInfo() {
-           return ItemDataLoader.loadAllItemInfos();
+        return ItemDataLoader.loadAllItemInfos();
     }
 
     public List<Item> convertToItems(List<String> barcodes) {
         List<ItemInfo> itemsInfo = getItemsInfo();
-        List<Item> purchasedItems = new ArrayList<>(new HashSet<>());
-        int quantity;
-        int subTotal = 0;
-        int i = 0;
-        for (String barcode : barcodes) {
-            if (barcode.equals(itemsInfo.get(i).getBarcode())) {
-                quantity = Collections.frequency(barcodes, barcode);
-                Item newItem = new Item(itemsInfo.get(i).getName(), quantity, itemsInfo.get(i).getPrice(), subTotal);
-                purchasedItems.add(newItem);
-                i++;
-            }
+        List<Item> allItems = new ArrayList<>();
 
+        for (String barcode : barcodes) {
+            for (ItemInfo itemInfo : itemsInfo) {
+                if (barcode.equals(itemInfo.getBarcode())) {
+                    Item newItem = new Item(itemInfo.getName(), Collections.frequency(barcodes, barcode), itemInfo.getPrice());
+                    allItems.add(newItem);
+                }
+            }
         }
-        return purchasedItems;
+        return new ArrayList<>(new LinkedHashSet<>(allItems));
     }
 
     public List<Item> calculateSubtotal(List<Item> purchasedItems) {
-        List<Item> itemsWithSubtotal = new ArrayList<>();
         for (Item itemInfo : purchasedItems) {
             int subTotal = itemInfo.getUnitPrice() * itemInfo.getQuantity();
-            Item updatedItem = new Item(itemInfo.getName(), itemInfo.getQuantity(), itemInfo.getUnitPrice(), subTotal);
-            itemsWithSubtotal.add(updatedItem);
-
+            itemInfo.setSubTotal(subTotal);
         }
-        return itemsWithSubtotal;
+        return purchasedItems;
     }
 
     public Receipt calculateTotalCost(List<Item> itemsWithSubtotal) {
@@ -51,8 +43,7 @@ public class PosMachine {
 
     public Receipt calculateReceipt(List<Item> purchasedItems) {
         List<Item> itemsWithSubtotal = calculateSubtotal(purchasedItems);
-        Receipt receipt = calculateTotalCost(itemsWithSubtotal);
-
-        return receipt;
+        return calculateTotalCost(itemsWithSubtotal);
     }
+
 }
