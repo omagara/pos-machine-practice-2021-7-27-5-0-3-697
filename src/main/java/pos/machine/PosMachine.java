@@ -14,20 +14,19 @@ public class PosMachine {
 
     public List<Item> convertToItems(List<String> barcodes) {
         List<ItemInfo> itemsInfo = getItemsInfo();
-        List<Item> allItems = new ArrayList<>();
+        List<Item> purchasedItems = new ArrayList<>(new HashSet<>());
         int quantity;
         int subTotal = 0;
-        for (ItemInfo itemInfo : itemsInfo) {
-            for (String barcode : barcodes) {
-                if (barcode.equals(itemInfo.getBarcode())) {
-                    quantity = Collections.frequency(barcodes, barcode);
-                    Item newItem = new Item(itemInfo.getName(), quantity, itemInfo.getPrice(), subTotal);
-                    allItems.add(newItem);
-                }
+        int i = 0;
+        for (String barcode : barcodes) {
+            if (barcode.equals(itemsInfo.get(i).getBarcode())) {
+                quantity = Collections.frequency(barcodes, barcode);
+                Item newItem = new Item(itemsInfo.get(i).getName(), quantity, itemsInfo.get(i).getPrice(), subTotal);
+                purchasedItems.add(newItem);
+                i++;
             }
+
         }
-        List<Item> purchasedItems = new ArrayList<>(new HashSet<>(allItems));
-        ;
         return purchasedItems;
     }
 
