@@ -63,5 +63,10 @@ public class PosMachine {
                 "**********************";
     }
 
+    public String generateReceipt(Receipt receipt) {
+        String itemsDetail = addItemsDetail(receipt);
+        double totalCost = receipt.getTotalCost();
+        return addTotalCost(itemsDetail, totalCost);
+    }
 
 }
