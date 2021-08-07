@@ -14,11 +14,13 @@ public class Item {
         this.unitPrice = unitPrice;
         this.subTotal = subTotal;
     }
+
     public Item(String name, int quantity, int unitPrice) {
         this.name = name;
         this.quantity = quantity;
         this.unitPrice = unitPrice;
     }
+
     private int subTotal;
 
     public String getName() {

@@ -1,7 +1,6 @@
 package pos.machine;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class PosMachine {
     public String printReceipt(List<String> barcodes) {
@@ -52,8 +51,8 @@ public class PosMachine {
     }
 
     public String addItemsDetail(Receipt receipt) {
-        String itemsDetail="";
-        for (Item itemDetail: receipt.getItemsWithSubtotal()) {
+        String itemsDetail = "";
+        for (Item itemDetail : receipt.getItemsWithSubtotal()) {
             itemsDetail = itemsDetail + "Name: " + itemDetail.getName() + ", Quantity: " + itemDetail.getQuantity() +
                     ", Unit price: " + itemDetail.getUnitPrice() +
                     " (yuan), Subtotal: " + itemDetail.getSubTotal() + " (yuan)\n";
