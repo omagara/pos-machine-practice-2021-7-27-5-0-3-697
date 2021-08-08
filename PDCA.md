@@ -67,3 +67,7 @@ P: 2 mins.
 D: 54s  
 C: I just invoked on the functions of the POS and passed in the required parameters   
 A: I should keep the good behavior on implementing the function  
+    
+---
+  
+ACTION: Review and delve deeper into the java collections framework and Streams API.  
